@@ -1,0 +1,68 @@
+# ===========================================
+# RAG Chatbot - Docker Compose Configuration
+# ===========================================
+
+version: '3.8'
+
+services:
+  # ===========================================
+  # RAG Chatbot API
+  # ===========================================
+  rag-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-chatbot-api
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    environment:
+      # OpenRouter Configuration
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OPENROUTER_BASE_URL=${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
+      
+      # Qdrant Configuration
+      - QDRANT_API_KEY=${QDRANT_API_KEY}
+      - QDRANT_URL=${QDRANT_URL}
+      - QDRANT_COLLECTION=${QDRANT_COLLECTION:-rag_documents}
+      
+      # MongoDB Configuration
+      - MONGO_URI=${MONGO_URI}
+      - MONGO_DB_NAME=${MONGO_DB_NAME:-rag_db}
+      
+      # Application Configuration
+      - APP_HOST=0.0.0.0
+      - APP_PORT=8000
+      - DEBUG=${DEBUG:-False}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      
+      # LLM Configuration
+      - LLM_MODEL=${LLM_MODEL:-deepseek/deepseek-chat}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-openai/text-embedding-3-small}
+      - TEMPERATURE=${TEMPERATURE:-0.7}
+      - MAX_TOKENS=${MAX_TOKENS:-2048}
+      
+      # RAG Configuration
+      - TOP_K=${TOP_K:-5}
+      - SIMILARITY_THRESHOLD=${SIMILARITY_THRESHOLD:-0.6}
+      - CHUNK_SIZE=${CHUNK_SIZE:-512}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-50}
+    
+    volumes:
+      - ./logs:/app/logs
+    
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+# ===========================================
+# Networks
+# ===========================================
+networks:
+  default:
+    name: rag-network
+    driver: bridge
