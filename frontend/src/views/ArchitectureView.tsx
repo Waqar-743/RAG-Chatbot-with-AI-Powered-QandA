@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useToast } from '../context/GlobalContext';
+import { motion } from 'framer-motion';
 
 const ArchitectureView: React.FC = () => {
   const { showToast } = useToast();
+  const constraintsRef = useRef(null);
 
   const handleExport = () => {
     showToast('Preparing system blueprint PDF...', 'info');
@@ -47,7 +49,10 @@ const ArchitectureView: React.FC = () => {
       </header>
 
       <div className="flex-1 p-10 overflow-auto no-scrollbar">
-        <div className="relative w-full h-[650px] min-w-[1000px] bg-[#111418] rounded-2xl border border-[#283039] blueprint-grid overflow-hidden p-8 shadow-2xl">
+        <div 
+          ref={constraintsRef}
+          className="relative w-full h-[650px] min-w-[1000px] bg-[#111418] rounded-2xl border border-[#283039] blueprint-grid overflow-hidden p-8 shadow-2xl"
+        >
           {/* Legend */}
           <div className="absolute bottom-6 left-6 flex flex-col gap-2 bg-[#111418]/90 p-3 rounded-lg border border-[#283039] backdrop-blur-sm z-20">
             <p className="text-[10px] uppercase font-bold text-[#9dabb9] mb-1">Legend</p>
@@ -62,7 +67,13 @@ const ArchitectureView: React.FC = () => {
           </div>
 
           {/* Node 1: Frontend */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-10 z-10">
+          <motion.div 
+            drag 
+            dragConstraints={constraintsRef}
+            dragElastic={0.1}
+            whileDrag={{ zIndex: 50 }}
+            className="absolute top-1/2 -translate-y-1/2 left-10 z-10"
+          >
             <NodeCard 
               icon="web" 
               title="Frontend Layer" 
@@ -71,7 +82,7 @@ const ArchitectureView: React.FC = () => {
               type="core"
               onClick={() => showToast('Frontend Layer: React 18 + TypeScript', 'info')}
             />
-          </div>
+          </motion.div>
 
           {/* Connector: REST */}
           <div className="absolute top-1/2 left-[264px] w-[60px] h-[2px] bg-primary/40 flex items-center justify-center -translate-y-1/2">
@@ -80,7 +91,13 @@ const ArchitectureView: React.FC = () => {
           </div>
 
           {/* Node 2: Backend */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-[324px] z-10">
+          <motion.div 
+            drag 
+            dragConstraints={constraintsRef}
+            dragElastic={0.1}
+            whileDrag={{ zIndex: 50 }}
+            className="absolute top-1/2 -translate-y-1/2 left-[324px] z-10"
+          >
             <NodeCard 
               icon="api" 
               title="Backend Layer" 
@@ -89,7 +106,7 @@ const ArchitectureView: React.FC = () => {
               type="core"
               onClick={() => showToast('Backend Layer: FastAPI + Uvicorn', 'success')}
             />
-          </div>
+          </motion.div>
 
           {/* Connector: Async */}
           <div className="absolute top-1/2 left-[548px] w-[60px] h-[2px] bg-primary/40 flex items-center justify-center -translate-y-1/2">
@@ -98,7 +115,13 @@ const ArchitectureView: React.FC = () => {
           </div>
 
           {/* Node 3: Engine */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-[608px] z-10">
+          <motion.div 
+            drag 
+            dragConstraints={constraintsRef}
+            dragElastic={0.1}
+            whileDrag={{ zIndex: 50 }}
+            className="absolute top-1/2 -translate-y-1/2 left-[608px] z-10"
+          >
             <div 
               className="w-72 bg-[#1b222a] border-2 border-primary/50 p-6 rounded-2xl shadow-[0_0_40px_rgba(255, 178, 0,0.15)] scale-110 cursor-pointer hover:border-primary transition-all"
               onClick={() => showToast('RAG Engine: LlamaIndex + Custom Pipeline', 'info')}
@@ -123,10 +146,16 @@ const ArchitectureView: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* External Services Node */}
-          <div className="absolute top-16 left-[612px] z-10">
+          <motion.div 
+            drag 
+            dragConstraints={constraintsRef}
+            dragElastic={0.1}
+            whileDrag={{ zIndex: 50 }}
+            className="absolute top-16 left-[612px] z-10"
+          >
              <NodeCard 
               icon="cloud" 
               title="External Services" 
@@ -136,14 +165,20 @@ const ArchitectureView: React.FC = () => {
               width="w-72"
               onClick={() => showToast('External APIs: OpenRouter → DeepSeek + text-embedding-3-small', 'success')}
             />
-            {/* vertical connector */}
+            {/* vertical connector - localized to the node for now */}
             <div className="absolute top-full left-[144px] w-[2px] h-[64px] bg-accent-teal/30">
                <span className="absolute -left-14 top-1/2 -translate-y-1/2 text-[8px] text-accent-teal font-mono uppercase">HTTP/JSON</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Data Persistence Node */}
-          <div className="absolute bottom-16 left-[612px] z-10">
+          <motion.div 
+            drag 
+            dragConstraints={constraintsRef}
+            dragElastic={0.1}
+            whileDrag={{ zIndex: 50 }}
+            className="absolute bottom-16 left-[612px] z-10"
+          >
             <div 
               className="w-72 bg-[#1b222a] border border-accent-teal/30 p-5 rounded-xl shadow-xl cursor-pointer hover:border-accent-teal transition-all"
               onClick={() => showToast('Persistence: Qdrant + MongoDB Atlas', 'success')}
@@ -165,9 +200,9 @@ const ArchitectureView: React.FC = () => {
                 </div>
               </div>
             </div>
-            {/* vertical connector */}
+            {/* vertical connector - localized */}
             <div className="absolute bottom-full left-[144px] w-[2px] h-[64px] bg-accent-teal/30"></div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Component Specifications */}
