@@ -331,8 +331,8 @@ const SecurityView: React.FC = () => {
                     type="monotone"
                     dataKey="allowed"
                     stackId="1"
-                    stroke="#137fec"
-                    fill="#137fec"
+                    stroke="#1D546D"
+                    fill="#1D546D"
                     fillOpacity={0.3}
                   />
                   <Area

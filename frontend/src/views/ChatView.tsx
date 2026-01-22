@@ -524,7 +524,7 @@ const ChatView: React.FC = () => {
                      <span className="text-[10px] font-bold">{messages.length}</span>
                   </div>
                   <div className="w-full bg-[#283039] h-1.5 rounded-full overflow-hidden">
-                     <div className="bg-primary h-full shadow-[0_0_8px_#137fec]" style={{ width: `${Math.min(messages.length * 5, 100)}%` }}></div>
+                     <div className="bg-primary h-full shadow-[0_0_8px_#1D546D]" style={{ width: `${Math.min(messages.length * 5, 100)}%` }}></div>
                   </div>
                </div>
             </div>

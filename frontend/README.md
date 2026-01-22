@@ -112,7 +112,7 @@ VITE_API_BASE_URL=http://localhost:8000
 
 The color scheme is defined in `tailwind.config.js`:
 
-- **Primary**: `#137fec` (Blue)
+- **Primary**: `#1D546D` (Dark Teal)
 - **Accent Teal**: `#2dd4bf`
 - **Background**: `#111418` (Dark)
 - **Surface**: `#1b222a` (Slightly lighter dark)
