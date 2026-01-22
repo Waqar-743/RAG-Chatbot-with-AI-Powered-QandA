@@ -76,7 +76,7 @@ const ArchitectureView: React.FC = () => {
           {/* Connector: REST */}
           <div className="absolute top-1/2 left-[264px] w-[60px] h-[2px] bg-primary/40 flex items-center justify-center -translate-y-1/2">
             <span className="text-[9px] bg-[#111418] px-1 text-primary font-mono border border-primary/30 rounded">REST</span>
-            <div className="absolute right-0 translate-x-1/2 size-1.5 rounded-full bg-primary shadow-[0_0_8px_#1D546D]"></div>
+            <div className="absolute right-0 translate-x-1/2 size-1.5 rounded-full bg-primary shadow-[0_0_8px_#FFB200]"></div>
           </div>
 
           {/* Node 2: Backend */}
@@ -94,13 +94,13 @@ const ArchitectureView: React.FC = () => {
           {/* Connector: Async */}
           <div className="absolute top-1/2 left-[548px] w-[60px] h-[2px] bg-primary/40 flex items-center justify-center -translate-y-1/2">
             <span className="text-[9px] bg-[#111418] px-1 text-primary font-mono border border-primary/30 rounded">Async</span>
-            <div className="absolute right-0 translate-x-1/2 size-1.5 rounded-full bg-primary shadow-[0_0_8px_#1D546D]"></div>
+            <div className="absolute right-0 translate-x-1/2 size-1.5 rounded-full bg-primary shadow-[0_0_8px_#FFB200]"></div>
           </div>
 
           {/* Node 3: Engine */}
           <div className="absolute top-1/2 -translate-y-1/2 left-[608px] z-10">
             <div 
-              className="w-72 bg-[#1b222a] border-2 border-primary/50 p-6 rounded-2xl shadow-[0_0_40px_rgba(29, 84, 109,0.15)] scale-110 cursor-pointer hover:border-primary transition-all"
+              className="w-72 bg-[#1b222a] border-2 border-primary/50 p-6 rounded-2xl shadow-[0_0_40px_rgba(255, 178, 0,0.15)] scale-110 cursor-pointer hover:border-primary transition-all"
               onClick={() => showToast('RAG Engine: LlamaIndex + Custom Pipeline', 'info')}
             >
               <div className="flex items-center gap-3 mb-4">

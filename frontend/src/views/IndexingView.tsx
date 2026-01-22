@@ -447,7 +447,7 @@ const IndexingView: React.FC = () => {
                {/* Progress line */}
                <div className="absolute top-5 left-8 right-8 h-[2px] bg-[#283039] z-0">
                   <div 
-                    className={`h-full transition-all duration-500 ${pipelineStage === 'error' ? 'bg-red-500' : pipelineStage === 'complete' ? 'bg-emerald-500' : 'bg-primary shadow-[0_0_8px_#1D546D]'}`}
+                    className={`h-full transition-all duration-500 ${pipelineStage === 'error' ? 'bg-red-500' : pipelineStage === 'complete' ? 'bg-emerald-500' : 'bg-primary shadow-[0_0_8px_#FFB200]'}`}
                     style={{ width: `${progressPercent}%` }}
                   />
                </div>
