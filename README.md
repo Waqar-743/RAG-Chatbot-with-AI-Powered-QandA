@@ -1,18 +1,18 @@
-# 🤖 RAG Chatbot - Production-Ready RAG Application
+#  RAG Chatbot - Production-Ready RAG Application
 
 A production-ready Retrieval-Augmented Generation (RAG) chatbot built with Python, featuring semantic document search, AI-powered question answering, and source citations.
 
-## ✨ Features
+##  Features
 
-- 🔍 **Semantic Search** - Find relevant documents using vector similarity
-- 🧠 **AI-Powered Answers** - Generate accurate responses using LLM
-- 📚 **Multi-Document Support** - Index and search across multiple documents
-- 📊 **Source Citations** - Every answer includes relevant sources
-- 💬 **Chat History** - Track conversation history per session
-- 🚀 **Production-Ready** - Docker support, logging, error handling
-- 🔌 **REST API** - Clean FastAPI endpoints for easy integration
+-  **Semantic Search** - Find relevant documents using vector similarity
+-  **AI-Powered Answers** - Generate accurate responses using LLM
+-  **Multi-Document Support** - Index and search across multiple documents
+-  **Source Citations** - Every answer includes relevant sources
+-  **Chat History** - Track conversation history per session
+-  **Production-Ready** - Docker support, logging, error handling
+-  **REST API** - Clean FastAPI endpoints for easy integration
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -78,7 +78,7 @@ RAGChatbot/
 └── README.md             # This file
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone & Setup
 
@@ -128,7 +128,7 @@ npm run dev
 
 - **Frontend**: http://localhost:5173
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 ```bash
 # Build and run
